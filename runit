@@ -1,6 +1,7 @@
 #!/bin/bash
 
 docker stop pg1 web1
+docker network rm myNetwork
 docker run --rm -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 --name pg1 postgres
 docker build -t demo .
 docker run --rm -d -p 5000:5000 --name web1 demo
