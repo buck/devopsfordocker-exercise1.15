@@ -1,6 +1,7 @@
 {
-  "host": "localhost",
+  "host": "pg1",
   "port": 5432,
-  "database": "pg-promise-demo",
-  "user": "postgres"
+  "database": "postgres",
+  "user": "postgres",
+  "password": "postgres"
 }

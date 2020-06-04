@@ -1,5 +1,18 @@
-pg-promise-demo
-===============
+# pg-promise-demo
+
+Running under Docker (tedious without using docker-compose):
+
+1. docker run --rm -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 --name pg1 postgres
+
+2. docker build -t demo .
+3. docker run --rm -d -p 5000:5000 --name web1 demo
+   docker network create myNetwork
+   docker network connect myNetwork pg1
+   docker network connect myNetwork web1
+4. visit http://localhost:5000/users/create to create the users table
+5. visit http://localhost:5000/users/init to initialize some test users
+6. visit http://localhost:5000/users/all to show all the users
+7. and so on for different tests, complete list below
 
 This is an advanced demo of the best practices of using [pg-promise], and managing your database architecture.
 
@@ -7,19 +20,19 @@ It shows how to organize an enterprise-level database application, with consider
 
 The demo focuses on the following:
 
-* The best way to organize your database module
-* Use of the _Repository_ pattern for your database
-* Efficient use of queries via external SQL files
-* Query monitoring and error diagnostics
+- The best way to organize your database module
+- Use of the _Repository_ pattern for your database
+- Efficient use of queries via external SQL files
+- Query monitoring and error diagnostics
 
 The demo includes two separate implementations, with identical functionality:
 
-* [ES7 JavaScript implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript)
-* [TypeScript 3.x implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript)
+- [ES7 JavaScript implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript)
+- [TypeScript 3.x implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript)
 
 Each uses a basic HTTP service to let you quickly test db calls in a browser. Do not however reuse
 any of the HTTP-service code, it is over-simplified, for the test, not for you to copy. The demo focus
-is on the database layer only. 
+is on the database layer only.
 
 ### Installing & Running
 
@@ -34,8 +47,8 @@ that you are interested in. See details on the corresponding pages: [JavaScript]
 Once the application is up and running, you can fire away URL commands in a browser, as per the web API that's implemented,
 while watching what's happening in:
 
-* the console output (make sure you have NODE_ENV=`development`)
-* errors log - file `db/errors.log`
+- the console output (make sure you have NODE_ENV=`development`)
+- errors log - file `db/errors.log`
 
 The application implements two tables: `users->products` as one-to-many. Once the app is running, you should create
 and populate those as the very first commands:
@@ -47,7 +60,7 @@ and populate those as the very first commands:
 ```
 
 After that see other supported API commands in the code:
- 
+
 ```
 /users/empty
 /users/drop
@@ -65,7 +78,7 @@ After that see other supported API commands in the code:
 /products/total
 ```
 
-[JavaScript]:https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript
-[TypeScript]:https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript
-[pg-promise]:https://github.com/vitaly-t/pg-promise
-[pg-monitor]:https://github.com/vitaly-t/pg-monitor
+[javascript]: https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript
+[typescript]: https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript
+[pg-promise]: https://github.com/vitaly-t/pg-promise
+[pg-monitor]: https://github.com/vitaly-t/pg-monitor
