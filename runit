@@ -3,8 +3,7 @@
 docker stop pg1 web1
 docker network rm pg-promise
 docker run --rm -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 --name pg1 postgres
-docker build -t demo .
-docker run --rm -d -p 5000:5000 --name web1 demo
+docker run --rm -d -p 5000:5000 --name web1 disarli/pg-promise-demo
 docker network create pg-promise
 docker network connect pg-promise pg1
 docker network connect pg-promise web1
