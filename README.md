@@ -4,10 +4,10 @@
 
 To build only the Docker image:
 
-- docker build -t demo .
+- docker build -t disarli/pg-promise-demo .
 
-Run the "runit" bash script to clean old containers, build the
-pg-promise demo web server from scratch, start a clean Postgresql
+Run the "runit" bash script to clean old containers, run the
+disarli/pg-promise demo web server, start a clean Postgresql
 database, and network the containers together. Then:
 
 1. visit http://localhost:5000/users/create to create the users table
