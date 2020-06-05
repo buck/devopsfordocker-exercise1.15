@@ -1,18 +1,22 @@
 # pg-promise-demo
 
-Running under Docker (tedious without using docker-compose):
+## Running with Docker
 
-1. docker run --rm -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 --name pg1 postgres
+To build only the Docker image:
 
-2. docker build -t demo .
-3. docker run --rm -d -p 5000:5000 --name web1 demo
-   docker network create myNetwork
-   docker network connect myNetwork pg1
-   docker network connect myNetwork web1
-4. visit http://localhost:5000/users/create to create the users table
-5. visit http://localhost:5000/users/init to initialize some test users
-6. visit http://localhost:5000/users/all to show all the users
-7. and so on for different tests, complete list below
+- docker build -t demo .
+
+Run the "runit" bash script to clean old containers, build the
+pg-promise demo web server from scratch, start a clean Postgresql
+database, and network the containers together. Then:
+
+1. visit http://localhost:5000/users/create to create the users table
+2. visit http://localhost:5000/users/init to initialize some test users
+3. visit http://localhost:5000/users/all to show all the users
+
+and so on for different tests. Complete list below
+
+## Introduction
 
 This is an advanced demo of the best practices of using [pg-promise], and managing your database architecture.
 
